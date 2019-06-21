@@ -46,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.mfavorit.setVisibility(View.VISIBLE);
+
         if(!data.get(position).getTitle().equals("No Movies Found")){
             holder.txttitle.setText(data.get(position).getTitle());
             holder.txtdate.setText(data.get(position).getYear());
@@ -59,7 +59,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }else{
             holder.txttitle.setText(data.get(position).getTitle());
             holder.txtdate.setText("");
-            holder.mfavorit.setVisibility(View.INVISIBLE);
 
         }
 

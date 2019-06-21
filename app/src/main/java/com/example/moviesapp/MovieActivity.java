@@ -66,6 +66,12 @@ public class MovieActivity extends AppCompatActivity  implements MovieActivityCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        movieSavedData =new ArrayList<Search>();
+        int i = 0;
+        SessionManager session = new SessionManager(this);
+        if(session.getfavorite()!=null) {
+            movieSavedData=session.getfavorite();
+        }
         serchString="avengers";
 
         dialog = new ProgressDialog(this);
@@ -85,12 +91,7 @@ public class MovieActivity extends AppCompatActivity  implements MovieActivityCo
         recyclerView.setAdapter(recyclerViewAdapter);
         progressBar = findViewById(R.id.progressBar);
         presenter.loadData(serchString,this);
-        movieSavedData =new ArrayList<Search>();
-        int i = 0;
-        SessionManager session = new SessionManager(this);
-        if(session.getfavorite()!=null) {
-            movieSavedData=session.getfavorite();
-        }
+
 
     }
     @Override
@@ -151,8 +152,10 @@ public class MovieActivity extends AppCompatActivity  implements MovieActivityCo
                 }
             }
         if(i==0){
-            movieSavedData.add(search);
-            session.createfavorite(movieSavedData);
+            if(!search.getTitle().equals("No Movies Found")) {
+                movieSavedData.add(search);
+                session.createfavorite(movieSavedData);
+            }
         }else{
             session.createfavorite(movieSavedData);
 
