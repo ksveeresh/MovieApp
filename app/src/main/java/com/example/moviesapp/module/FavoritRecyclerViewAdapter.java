@@ -44,7 +44,7 @@ public class FavoritRecyclerViewAdapter extends RecyclerView.Adapter<FavoritRecy
 
         }
 
-        Glide.with(context).load(data.get(position).getPoster()).into(holder.imageView);
+        Glide.with(context).load(data.get(position).getPoster()).placeholder(R.drawable.ic_broken_image).into(holder.imageView);
         holder.mContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

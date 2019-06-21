@@ -62,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
 
-        Glide.with(mContext).load(data.get(position).getPoster()).into(holder.imageView);
+        Glide.with(mContext).load(data.get(position).getPoster()).placeholder(R.drawable.ic_broken_image).into(holder.imageView);
         holder.mContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
